@@ -1,0 +1,5 @@
+Moteur Physique :
+http://gregorycorgie.developpez.com/tutoriels/physic/ 
+
+Shadow Mapping :
+http://www.opengl-tutorial.org/fr/intermediate-tutorials/tutorial-16-shadow-mapping/
