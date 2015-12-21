@@ -74,11 +74,11 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\Libs\glfw\include\GLFW;..\..\Libs\glm\glm;..\..\Libs\glew\include\GL;..\..\Libs\FMod;..\Libs;..\..\Libs\boost\include;..\..\Libs\SOIL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Libs\glfw\include\GLFW;..\..\Libs\glm\glm;..\..\Libs\glew\include\GL;..\..\Libs\FMod;..\..\Libs;..\..\Libs\boost\include;..\..\Libs\SOIL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>..\..\Libs\SOIL\lib\VS2015\debug;..\..\Libs\glfw\libVS2015\Debug;..\..\Libs\glew\lib\Release\Win32;..\..\Libs\FMod;..\..\Libs\boost\libVS2015;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glew32s.lib;fmod_vc.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\Libs\SOIL\lib\VS2015\debug;..\..\Libs\glfw\libVS2015\Debug;..\..\Libs\glew\lib\Release\Win32;..\..\Libs\FMod;..\..\Libs\boost\libVS2015;..\..\Libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glew32s.lib;glu32.lib;glfw3.lib;fmod_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>msvcrt.lib;libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
@@ -116,7 +116,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Map.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="GameLoop.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="RenderDataBinder.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

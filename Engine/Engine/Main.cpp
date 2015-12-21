@@ -1,12 +1,10 @@
 #include <iostream>
 
-#include "fmod.hpp"
-#include "glm.hpp"
-#include "boost\thread.hpp"
-#include "SOIL.h"
-#include "glfw3.h"
+#include "GameLoop.h";
 
 int main(void)
 {
+	GameLoop::Initialize();
+	GameLoop::Start();
 	system("pause");
 }
