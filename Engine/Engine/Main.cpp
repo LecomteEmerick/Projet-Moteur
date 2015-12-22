@@ -6,5 +6,5 @@ int main(void)
 {
 	GameLoop::Initialize();
 	GameLoop::Start();
-	system("pause");
+	//system("pause");
 }

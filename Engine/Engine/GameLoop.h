@@ -3,15 +3,19 @@
 #include <vector>
 #include <functional>
 
-#define GLEW_STATIC 1
+#define GLEW_STATIC
 #include "glew.h"
-#include "glm.hpp"
-
 #define GLFW_INCLUDE_GLU
 #include "glfw3.h"
 
+#include "glm.hpp"
+
 #include "RenderDataBinder.h"
 #include "Camera.h"
+
+//Debug
+#include "Map.h"
+
 class GameLoop
 {
 public:
@@ -20,27 +24,37 @@ public:
 	static void Start();
 	static void Exit();
 
-	static void RegisterDrawFunction(std::function<void(const RenderDataBinder&)> drawFunction) { GameLoop::DrawCallList.push_back(drawFunction); }
-	static void RegisterPhysicUpdateFunction(std::function<void(const float& time)> updatePhysicsFunction) { GameLoop::PhysicUpdateFunction.push_back(updatePhysicsFunction); }
-	static void RegisterLogicUpdateFunction(std::function<void(const float& time)> updateLogicFunction) { GameLoop::LogicUpdateFunction.push_back(updateLogicFunction); }
+	static void RegisterStartFunction(std::function<void(void)> startFunction) { GameLoop::StartCall.push_back(startFunction); }
+	static void RegisterEndFunction(std::function<void(void)> endFunction) { GameLoop::EndCall.push_back(endFunction); }
+
+	static void RegisterDrawFunction(std::function<void(const RenderDataBinder& RenderInfos)> drawFunction) { GameLoop::DrawCallList.push_back(drawFunction); }
+	static void RegisterPhysicUpdateFunction(std::function<void(void)> updatePhysicsFunction) { GameLoop::PhysicUpdateFunction.push_back(updatePhysicsFunction); }
+	static void RegisterLogicUpdateFunction(std::function<void(void)> updateLogicFunction) { GameLoop::LogicUpdateFunction.push_back(updateLogicFunction); }
 private:
 	//Function
+	static void CallStartFunction();
+	static void CallEndFunction();
+
 	static void UpdateLogic();
 	static void UpdatePhysics();
 	static void UpdateRender();
 
-	static void	MouseFunctionHandler(GLFWwindow* window, int button, int action, int mods);
-	static void	KeyboardFunctionHandler(GLFWwindow* window, int key, int scancode, int action, int mods);
-
 	//Variable
+	static std::vector < std::function<void(void)>> GameLoop::StartCall;
+
 	static std::vector < std::function<void(const RenderDataBinder& RenderInfos)>> DrawCallList;
-	static std::vector < std::function<void(const float& time)>> LogicUpdateFunction;
-	static std::vector < std::function<void(const float& time)>> PhysicUpdateFunction;
+	static std::vector < std::function<void(void)>> LogicUpdateFunction;
+	static std::vector < std::function<void(void)>> PhysicUpdateFunction;
+
+	static std::vector < std::function<void(void)>> GameLoop::EndCall;
 
 	static bool			isRunning;
 	static Camera		mainCamera;
 	static GLFWwindow*	window;
 	static int			windowWidth;
 	static int			windowHeight;
+
+	//Debug
+	//static Map* mp;
 };
 

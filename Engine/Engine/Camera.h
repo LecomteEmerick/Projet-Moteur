@@ -26,9 +26,7 @@ public:
 	glm::mat4				projection() const;
 	glm::mat4				view() const;
 
-	float					CameraSensitivity;
-	float					CameraSpeed;
-	float					Depth;
+	void					InputCameraHandler(void);
 
 private:
 	glm::vec3				_position;
@@ -38,6 +36,9 @@ private:
 	float					_nearPlane;
 	float					_farPlane;
 	float					_viewportAspectRatio;
+	float					_cameraSensitivity;
+	float					_cameraSpeed;
+	float					_depth;
 
 	void					normalizeAngles();
 };

@@ -1,8 +1,18 @@
 #include "GameLoop.h"
 
-std::vector < std::function<void(const RenderDataBinder& RenderInfos)>> GameLoop::DrawCallList;
-std::vector < std::function<void(const float& time)>> GameLoop::LogicUpdateFunction;
-std::vector < std::function<void(const float& time)>> GameLoop::PhysicUpdateFunction;
+#include <iostream>
+
+#include "Time.h"
+#include "InputManager.h"
+
+
+std::vector < std::function<void(void)>> GameLoop::StartCall;
+
+std::vector < std::function<void(const RenderDataBinder&)>> GameLoop::DrawCallList;
+std::vector < std::function<void(void)>> GameLoop::LogicUpdateFunction;
+std::vector < std::function<void(void)>> GameLoop::PhysicUpdateFunction;
+
+std::vector < std::function<void(void)>> GameLoop::EndCall;
 
 bool		GameLoop::isRunning;
 Camera		GameLoop::mainCamera;
@@ -10,36 +20,61 @@ GLFWwindow*	GameLoop::window;
 int			GameLoop::windowWidth=800;
 int			GameLoop::windowHeight=600;
 
+//Debug
+//Map* GameLoop::mp;
+
 void GameLoop::Initialize()
 {
 	GameLoop::mainCamera = Camera();
-	GameLoop::mainCamera.Depth = 10.0f;
-	GameLoop::mainCamera.setPosition(glm::vec3(0.0f, 0.0f, GameLoop::mainCamera.Depth));
-	GameLoop::mainCamera.lookAt(glm::vec3(0.0f, 0.0f, 0.0f));
-	GameLoop::mainCamera.CameraSpeed = 100.0f;
-	GameLoop::mainCamera.CameraSensitivity = 50.0f;
 
 	GameLoop::isRunning = false;
 
 	glfwInit();
 
-	GameLoop::window = glfwCreateWindow(GameLoop::windowWidth, GameLoop::windowHeight, "R.F Engine", NULL, NULL);
+	GameLoop::window = glfwCreateWindow(GameLoop::windowWidth, GameLoop::windowHeight, "Randall Flagg Engine", NULL, NULL);
 	glfwMakeContextCurrent(GameLoop::window);
 	glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
 
-	glfwSetKeyCallback(GameLoop::window, KeyboardFunctionHandler);
-	glfwSetMouseButtonCallback(GameLoop::window, MouseFunctionHandler);
+	glfwSetKeyCallback(GameLoop::window, InputManager::KeyboardFunc);
+	glfwSetMouseButtonCallback(GameLoop::window, InputManager::MouseButtonFunc);
+	glfwSetCursorPosCallback(GameLoop::window, InputManager::MouseMotionFunc);
+
+	GLenum error = glewInit();
+	if (error != GL_NO_ERROR) {
+		std::cout << error << std::endl;
+	}
+
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_CULL_FACE);
+
+	//GameLoop::mp = new Map();
 }
 
 void GameLoop::Start()
 {
+	Time::Start();
+
 	GameLoop::isRunning = true;
 	while (GameLoop::isRunning)
 	{
+		Time::Update();
+
+		glfwPollEvents();
+		
+		GameLoop::CallStartFunction();
+
 		GameLoop::UpdateLogic();
 		GameLoop::UpdatePhysics();
 		GameLoop::UpdateRender();
+
+		GameLoop::CallEndFunction();
+
+		InputManager::EndFrame();
+
+		if(glfwWindowShouldClose(GameLoop::window))
+			GameLoop::isRunning = false;
 	}
+	glfwTerminate();
 }
 
 void GameLoop::Exit()
@@ -47,9 +82,30 @@ void GameLoop::Exit()
 	GameLoop::isRunning = false;
 }
 
+void GameLoop::CallStartFunction()
+{
+	for (std::function<void(void)> function : GameLoop::StartCall)
+	{
+		function();
+	}
+	GameLoop::StartCall.clear();
+}
+
+void GameLoop::CallEndFunction()
+{
+	for (std::function<void(void)> function : GameLoop::EndCall)
+	{
+		function();
+	}
+	GameLoop::EndCall.clear();
+}
+
 void GameLoop::UpdateLogic()
 {
-
+	for (std::function<void(void)> function : GameLoop::LogicUpdateFunction)
+	{
+		function();
+	}
 }
 
 void GameLoop::UpdatePhysics()
@@ -59,15 +115,26 @@ void GameLoop::UpdatePhysics()
 
 void GameLoop::UpdateRender()
 {
+	int widthWindow;
+	int heightWindow;
 
-}
+	glfwGetWindowSize(window, &widthWindow, &heightWindow);
 
-void GameLoop::MouseFunctionHandler(GLFWwindow* window, int button, int action, int mods)
-{
+	glViewport(0, 0, widthWindow, heightWindow);
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClearDepth(1.F);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-}
+	glm::mat4 Projection = mainCamera.projection();
+	glm::mat4 World = mainCamera.view();
+	glm::mat4 View = glm::mat4(1.0f);
 
-void GameLoop::KeyboardFunctionHandler(GLFWwindow* window, int key, int scancode, int action, int mods)
-{
+	RenderDataBinder render(Projection, View, World);
 
+	for (std::function<void(const RenderDataBinder&)> function : GameLoop::DrawCallList)
+	{
+		function(render);
+	}
+
+	glfwSwapBuffers(window);
 }

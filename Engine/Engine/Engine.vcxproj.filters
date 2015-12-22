@@ -22,12 +22,21 @@
     <Filter Include="Fichiers d%27en-tête\Binder">
       <UniqueIdentifier>{c512d9d7-fc07-4fdd-b72b-9a5c59ddcfa9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\ManagerStatic">
+      <UniqueIdentifier>{17b2ef4a-f47c-40c7-89ec-ccfd5d23286e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\ManagerStatic">
+      <UniqueIdentifier>{ed81f1df-59bb-4567-98a3-125365879817}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\Utils">
+      <UniqueIdentifier>{cc01bbed-e746-4b1e-8e68-324fde0d71a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\Utils">
+      <UniqueIdentifier>{10b939c6-1e49-4785-a0db-59db33146bfb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="Map.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="GameLoop.cpp">
@@ -36,11 +45,20 @@
     <ClCompile Include="Camera.cpp">
       <Filter>Fichiers sources\Render</Filter>
     </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Fichiers sources\ManagerStatic</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Fichiers sources\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>Fichiers sources\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="common\EsgiShader.cpp">
+      <Filter>Fichiers sources\Render</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Map.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="GameLoop.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
@@ -49,6 +67,27 @@
     </ClInclude>
     <ClInclude Include="RenderDataBinder.h">
       <Filter>Fichiers d%27en-tête\Binder</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Fichiers d%27en-tête\ManagerStatic</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Fichiers d%27en-tête\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyState.h">
+      <Filter>Fichiers d%27en-tête\Binder</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse.h">
+      <Filter>Fichiers d%27en-tête\Binder</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Fichiers d%27en-tête\Binder</Filter>
+    </ClInclude>
+    <ClInclude Include="Time.h">
+      <Filter>Fichiers d%27en-tête\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="common\EsgiShader.h">
+      <Filter>Fichiers d%27en-tête\Render</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
