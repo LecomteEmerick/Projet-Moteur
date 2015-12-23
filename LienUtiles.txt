@@ -3,3 +3,6 @@ http://gregorycorgie.developpez.com/tutoriels/physic/
 
 Shadow Mapping :
 http://www.opengl-tutorial.org/fr/intermediate-tutorials/tutorial-16-shadow-mapping/
+
+Culling
+http://jeux.developpez.com/faq/3d/?page=culling
