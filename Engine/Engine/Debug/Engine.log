@@ -1,10 +1,13 @@
-﻿  GameLoop.cpp
+﻿  WindowEvent.cpp
+  GameLoop.cpp
+c:\users\elecomte\documents\[personnel] emerick cours\projet moteur\engine\engine\gui.h(18): warning C4244: 'argument' : conversion de 'double' en 'int', perte possible de données
+c:\users\elecomte\documents\[personnel] emerick cours\projet moteur\engine\engine\gui.h(19): warning C4244: 'argument' : conversion de 'double' en 'int', perte possible de données
 c:\users\elecomte\documents\[personnel] emerick cours\projet moteur\engine\engine\common\esgishader.h(12): warning C4005: 'GLEW_STATIC' : redéfinition de macro
   c:\users\elecomte\documents\[personnel] emerick cours\projet moteur\engine\engine\gameloop.h(6): note: voir la définition précédente de 'GLEW_STATIC'
+c:\users\elecomte\documents\[personnel] emerick cours\projet moteur\engine\engine\gameloop.cpp(68): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
+  GUI.cpp
+c:\users\elecomte\documents\[personnel] emerick cours\projet moteur\engine\engine\gui.h(18): warning C4244: 'argument' : conversion de 'double' en 'int', perte possible de données
+c:\users\elecomte\documents\[personnel] emerick cours\projet moteur\engine\engine\gui.h(19): warning C4244: 'argument' : conversion de 'double' en 'int', perte possible de données
   Génération de code en cours...
-  Ignoré... (aucune modification pertinente détectée)
-  Map.cpp
-  Main.cpp
-  Camera.cpp
   Engine.vcxproj -> C:\Users\elecomte\Documents\[Personnel] Emerick Cours\Projet Moteur\Engine\Debug\Engine.exe
   Engine.vcxproj -> C:\Users\elecomte\Documents\[Personnel] Emerick Cours\Projet Moteur\Engine\Debug\Engine.pdb (Partial PDB)

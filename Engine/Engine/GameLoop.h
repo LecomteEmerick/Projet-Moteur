@@ -12,9 +12,11 @@
 
 #include "RenderDataBinder.h"
 #include "Camera.h"
+#include "GUI.h"
 
 //Debug
 #include "Map.h"
+#include "Landmark.h"
 
 class GameLoop
 {
@@ -39,6 +41,8 @@ private:
 	static void UpdatePhysics();
 	static void UpdateRender();
 
+	static void ResizeWindow(GLFWwindow* window, int width, int height);
+
 	//Variable
 	static std::vector < std::function<void(void)>> GameLoop::StartCall;
 
@@ -54,7 +58,10 @@ private:
 	static int			windowWidth;
 	static int			windowHeight;
 
+	static GUI			windowGUI;
+
 	//Debug
-	//static Map* mp;
+	static Landmark* mark;
+	static Map* mp;
 };
 

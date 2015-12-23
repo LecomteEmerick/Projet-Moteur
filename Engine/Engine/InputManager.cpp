@@ -28,10 +28,10 @@ void InputManager::MouseButtonFunc(GLFWwindow* window, int button, int action, i
 		break;
 	}
 
-	double x, y;
+	//double x, y;
 
-	glfwGetCursorPos(window, &x, &y);
-	InputManager::MouseState.ChangePosition(x, y);
+	//glfwGetCursorPos(window, &x, &y);
+	//InputManager::MouseState.ChangePosition(x, y);
 }
 
 void InputManager::KeyboardFunc(GLFWwindow* window, int key, int scancode, int action, int mods)
@@ -43,6 +43,10 @@ void InputManager::KeyboardFunc(GLFWwindow* window, int key, int scancode, int a
 	else if(action == GLFW_RELEASE)
 	{
 		InputManager::KeysState[key].ReleaseThisFrame = true;
+	}
+	else 
+	{
+		return;
 	}
 	
 	InputManager::KeysState[key].Down = action == GLFW_PRESS;
@@ -58,6 +62,7 @@ void InputManager::EndFrame()
 
 void InputManager::UpdateMouse()
 {
+	MouseState.EndFramePosition();
 	MouseState.ButtonLeft.EndFrameButton();
 	MouseState.ButtonRight.EndFrameButton();
 }

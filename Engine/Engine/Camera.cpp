@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 #include <cmath>
 #include "Camera.h"
 
@@ -10,19 +12,20 @@
 static const float MaxVerticalAngle = 85.0f; //must be less than 90 to avoid gimbal lock
 
 Camera::Camera() :
-_cameraSpeed(100.0f),
-_cameraSensitivity(50.0f),
+_cameraSpeed(10.0f),
+_cameraSensitivity(10.0f),
 _depth(10.f),
 _position(0.0f, 0.0f, 1.0f),
 _horizontalAngle(0.0f),
 _verticalAngle(0.0f),
 _fieldOfView(45.0f),
 _nearPlane(0.01f),
-_farPlane(500.0f),
+_farPlane(100.0f),
 _viewportAspectRatio(4.0f / 3.0f)
 {
 	this->setPosition(glm::vec3(0.0f, 0.0f, this->_depth));
 	this->lookAt(glm::vec3(0.0f, 0.0f, 0.0f));
+
 	GameLoop::RegisterLogicUpdateFunction(std::bind(&Camera::InputCameraHandler, this));
 }
 
@@ -150,4 +153,12 @@ void Camera::InputCameraHandler(void)
 
 	if (InputManager::KeysState[GLFW_KEY_LEFT_SHIFT].Down)
 		this->offsetPosition((float)Time::GetSecondElapsed() * _cameraSpeed * -this->up());
+
+	if (InputManager::MouseState.ButtonLeft.isPressed)
+	{
+		float xAngleUnit = (float)((InputManager::MouseState.GetLastXShifting()) * (float)Time::GetSecondElapsed() * _cameraSensitivity);
+		float yAngleUnit = (float)((InputManager::MouseState.GetLastYShifting()) * (float)Time::GetSecondElapsed() * _cameraSensitivity);
+
+		this->offsetOrientation(yAngleUnit, xAngleUnit);
+	}
 }

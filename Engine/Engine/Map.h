@@ -3,27 +3,24 @@
 #include "common\EsgiShader.h"
 #include "RenderDataBinder.h"
 
-const float vertex[] = {
-	-1.0f, 0.0f, -1.0f, 1.0f, 0.0f, 0.0f,
-	-1.0f, 0.0f,  1.0f, 1.0f, 0.0f, 0.0f,
-	 1.0f, 0.0f,  1.0f, 1.0f, 0.0f, 0.0f,
-	 1.0f, 0.0f, -1.0f, 1.0f, 0.0f, 0.0f
+const float vertexMap[] = {
+	-10.0f, 0.0f, -10.0f, 1.0f, 1.0f, 1.0f,
+	-10.0f, 0.0f,  10.0f, 1.0f, 1.0f, 1.0f,
+	 10.0f, 0.0f,  10.0f, 1.0f, 1.0f, 1.0f,
+	 10.0f, 0.0f, -10.0f, 1.0f, 1.0f, 1.0f
 };
 
-const unsigned short indices[] = {
-	0, 1,
-	1, 3,
-	3, 0,
-	1, 2,
-	2, 3,
-	3, 1
+const unsigned short indicesMap[] = {
+	0,1,2,
+	2,3,0
 };
 
 class Map
 {
 public:
 					Map();
-	void			Draw(const RenderDataBinder& render);
+	void			Draw(const RenderDataBinder& render) const;
+	void			Destroy();
 					~Map();
 
 private:

@@ -8,6 +8,8 @@ public:
 	static double	GetSecondElapsed();
 	static void		Play();
 	static void		Pause();
+
+	static int		Fps;
 private:
 	static double	time_;
 	static bool		isStarted_;

@@ -2,8 +2,10 @@
 
 #include <iostream>
 
+#include "WindowEvent.h"
 #include "Time.h"
 #include "InputManager.h"
+
 
 
 std::vector < std::function<void(void)>> GameLoop::StartCall;
@@ -19,14 +21,14 @@ Camera		GameLoop::mainCamera;
 GLFWwindow*	GameLoop::window;
 int			GameLoop::windowWidth=800;
 int			GameLoop::windowHeight=600;
+GUI			GameLoop::windowGUI;
 
 //Debug
-//Map* GameLoop::mp;
+Map* GameLoop::mp;
+Landmark* GameLoop::mark;
 
 void GameLoop::Initialize()
 {
-	GameLoop::mainCamera = Camera();
-
 	GameLoop::isRunning = false;
 
 	glfwInit();
@@ -35,9 +37,9 @@ void GameLoop::Initialize()
 	glfwMakeContextCurrent(GameLoop::window);
 	glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
 
-	glfwSetKeyCallback(GameLoop::window, InputManager::KeyboardFunc);
-	glfwSetMouseButtonCallback(GameLoop::window, InputManager::MouseButtonFunc);
-	glfwSetCursorPosCallback(GameLoop::window, InputManager::MouseMotionFunc);
+	WindowEvent::Initialize(GameLoop::window);
+
+	glfwSetWindowSizeCallback(GameLoop::window, GameLoop::ResizeWindow); //window resize
 
 	GLenum error = glewInit();
 	if (error != GL_NO_ERROR) {
@@ -47,7 +49,23 @@ void GameLoop::Initialize()
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
 
-	//GameLoop::mp = new Map();
+	WindowEvent::RegisterMouseButtonFunction(&InputManager::MouseButtonFunc);
+	WindowEvent::RegisterMouseMotionFunction(&InputManager::MouseMotionFunc);
+	WindowEvent::RegisterKeyFunction(&InputManager::KeyboardFunc);
+
+	GameLoop::windowGUI = GUI(GameLoop::windowWidth, GameLoop::windowHeight);
+
+	GameLoop::mp = new Map();
+	GameLoop::mark = new Landmark();
+}
+
+void GameLoop::ResizeWindow(GLFWwindow* window, int width, int height)
+{
+	glViewport(0, 0, width, height);
+
+	GameLoop::mainCamera.setViewportAspectRatio(width/height);
+
+	GameLoop::windowGUI.WindowSizeChange(width, height);
 }
 
 void GameLoop::Start()
@@ -58,9 +76,9 @@ void GameLoop::Start()
 	while (GameLoop::isRunning)
 	{
 		Time::Update();
-
-		glfwPollEvents();
 		
+		glfwPollEvents();
+
 		GameLoop::CallStartFunction();
 
 		GameLoop::UpdateLogic();
@@ -73,8 +91,10 @@ void GameLoop::Start()
 
 		if(glfwWindowShouldClose(GameLoop::window))
 			GameLoop::isRunning = false;
+
 	}
 	glfwTerminate();
+	TwTerminate();
 }
 
 void GameLoop::Exit()
@@ -135,6 +155,8 @@ void GameLoop::UpdateRender()
 	{
 		function(render);
 	}
+
+	GameLoop::windowGUI.Draw();
 
 	glfwSwapBuffers(window);
 }

@@ -12,6 +12,7 @@ bool	Time::isStarted_;
 int		Time::nbFrames_;
 
 bool	Time::printFps_;
+int	Time::Fps;
 
 
 void Time::Start()
@@ -22,6 +23,7 @@ void Time::Start()
 	Time::FpsCounterTime_ = Time::previousTime_;
 	Time::nbFrames_ = 0;
 	Time::printFps_ = true;
+	Time::Fps = 0;
 }
 
 void Time::Update()
@@ -42,7 +44,8 @@ void Time::Update()
 		nbFrames_++;
 		if (Time::previousTime_ - Time::FpsCounterTime_ >= 1.0)
 		{
-			std::cout << double(nbFrames_) << " fps\n" << std::endl;
+			//std::cout << double(nbFrames_) << " fps\n" << std::endl;
+			Fps = nbFrames_;
 			nbFrames_ = 0;
 			Time::FpsCounterTime_ += 1.0;
 		}

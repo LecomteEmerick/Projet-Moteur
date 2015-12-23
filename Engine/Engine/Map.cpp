@@ -6,8 +6,8 @@
 
 Map::Map()
 {
-	this->Shader.LoadVertexShader("ShaderLib\basic.vs");
-	this->Shader.LoadFragmentShader("ShaderLib\basic.fs");
+	this->Shader.LoadVertexShader("ShaderLib/basic.vs");
+	this->Shader.LoadFragmentShader("ShaderLib/basic.fs");
 	this->Shader.Create();
 
 	this->ShaderProgram = this->Shader.GetProgram();
@@ -23,18 +23,18 @@ void Map::ConstructEBO()
 {
 	glGenBuffers(1, &this->EBO);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indicesMap), indicesMap, GL_STATIC_DRAW);
 }
 
 void Map::ConstructVBO()
 {
 	glGenBuffers(1, &this->VBO);
 	glBindBuffer(GL_ARRAY_BUFFER, this->VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertex), vertex, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertexMap), vertexMap, GL_STATIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-void Map::Draw(const RenderDataBinder& render)
+void Map::Draw(const RenderDataBinder& render) const
 {
 	glUseProgram(this->ShaderProgram);
 
@@ -58,11 +58,22 @@ void Map::Draw(const RenderDataBinder& render)
 	glVertexAttribPointer(colorLocation, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, (void*)(3 * sizeof(float)));
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, this->EBO);
-	glDrawElements(GL_TRIANGLES, 12, GL_UNSIGNED_SHORT, nullptr);
+	glDrawElements(GL_TRIANGLES, sizeof(indicesMap), GL_UNSIGNED_SHORT, nullptr);
 
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	glUseProgram(0);
+}
+
+void Map::Destroy()
+{
+	glDeleteBuffers(1, &EBO);
+	glDeleteBuffers(1, &VBO);
+
+	this->Shader.Destroy();
 }
 
 Map::~Map()
 {
+	this->Destroy();
 }
