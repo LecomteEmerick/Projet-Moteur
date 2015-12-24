@@ -69,6 +69,9 @@
     <ClCompile Include="LoaderObj.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="tinyobjLoader\tiny_obj_loader.cc">
+      <Filter>Fichiers sources\Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameLoop.h">
@@ -112,6 +115,9 @@
     </ClInclude>
     <ClInclude Include="LoaderObj.h">
       <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyobjLoader\tiny_obj_loader.h">
+      <Filter>Fichiers d%27en-tête\Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

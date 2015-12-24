@@ -1,11 +1,4 @@
-﻿  Camera.cpp
-  Génération de code en cours...
-  Compilation en cours...
-  Map.cpp
-  Main.cpp
-c:\users\elecomte\documents\[personnel] emerick cours\projet moteur\engine\engine\main.cpp(3): warning C4067: jetons inattendus après la directive du préprocesseur - saut de ligne attendu
-  Landmark.cpp
-  GameLoop.cpp
-  Génération de code en cours...
-LoaderObj.obj : error LNK2019: symbole externe non résolu "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl tinyobj::LoadObj(class std::vector<struct tinyobj::shape_t,class std::allocator<struct tinyobj::shape_t> > &,class std::vector<struct tinyobj::material_t,class std::allocator<struct tinyobj::material_t> > &,char const *,char const *)" (?LoadObj@tinyobj@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAV?$vector@Ushape_t@tinyobj@@V?$allocator@Ushape_t@tinyobj@@@std@@@3@AAV?$vector@Umaterial_t@tinyobj@@V?$allocator@Umaterial_t@tinyobj@@@std@@@3@PBD2@Z) référencé dans la fonction "public: static void __cdecl LoaderObj::LoadObjFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,unsigned int &,unsigned int &,unsigned int &,unsigned int &)" (?LoadObjFile@LoaderObj@@SAXABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAI111@Z)
-C:\Users\elecomte\Documents\[Personnel] Emerick Cours\Projet Moteur\Engine\Debug\Engine.exe : fatal error LNK1120: 1 externes non résolus
+﻿  LoaderObj.cpp
+d:\users\emerick lecomte\mes documents\github\projet-moteur\engine\engine\loaderobj.cpp(50): warning C4018: '<' : incompatibilité signed/unsigned
+  Engine.vcxproj -> D:\Users\Emerick Lecomte\Mes documents\GitHub\Projet-Moteur\Engine\Debug\Engine.exe
+  Engine.vcxproj -> D:\Users\Emerick Lecomte\Mes documents\GitHub\Projet-Moteur\Engine\Debug\Engine.pdb (Partial PDB)
