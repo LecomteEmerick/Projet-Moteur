@@ -66,6 +66,9 @@
     <ClCompile Include="WindowEvent.cpp">
       <Filter>Fichiers sources\ManagerStatic</Filter>
     </ClCompile>
+    <ClCompile Include="LoaderObj.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameLoop.h">
@@ -106,6 +109,9 @@
     </ClInclude>
     <ClInclude Include="WindowEvent.h">
       <Filter>Fichiers d%27en-tête\ManagerStatic</Filter>
+    </ClInclude>
+    <ClInclude Include="LoaderObj.h">
+      <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

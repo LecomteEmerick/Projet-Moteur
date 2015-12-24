@@ -3,8 +3,9 @@
 #include <vector>
 #include <functional>
 
-#define GLEW_STATIC
+#define GLEW_STATIC 1
 #include "glew.h"
+
 #define GLFW_INCLUDE_GLU
 #include "glfw3.h"
 

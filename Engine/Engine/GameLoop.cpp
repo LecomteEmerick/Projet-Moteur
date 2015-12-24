@@ -63,7 +63,7 @@ void GameLoop::ResizeWindow(GLFWwindow* window, int width, int height)
 {
 	glViewport(0, 0, width, height);
 
-	GameLoop::mainCamera.setViewportAspectRatio(width/height);
+	GameLoop::mainCamera.setViewportAspectRatio((float)(width/height));
 
 	GameLoop::windowGUI.WindowSizeChange(width, height);
 }
