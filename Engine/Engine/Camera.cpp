@@ -20,13 +20,22 @@ _horizontalAngle(0.0f),
 _verticalAngle(0.0f),
 _fieldOfView(45.0f),
 _nearPlane(0.01f),
-_farPlane(100.0f),
+_farPlane(1000.0f),
 _viewportAspectRatio(4.0f / 3.0f)
 {
 	this->setPosition(glm::vec3(0.0f, 0.0f, this->_depth));
 	this->lookAt(glm::vec3(0.0f, 0.0f, 0.0f));
 
 	GameLoop::RegisterLogicUpdateFunction(std::bind(&Camera::InputCameraHandler, this));
+}
+
+void Camera::Initialize()
+{
+	glGenBuffers(1, &this->UBO);
+	glBindBuffer(GL_UNIFORM_BUFFER, this->UBO);
+	glBufferData(GL_UNIFORM_BUFFER, sizeof(glm::mat4) * 2, nullptr, GL_STREAM_DRAW);
+	glBindBufferBase(GL_UNIFORM_BUFFER, 0, this->UBO);
+	glBindBuffer(GL_UNIFORM_BUFFER, 0);
 }
 
 const glm::vec3& Camera::position() const {
@@ -156,7 +165,7 @@ void Camera::InputCameraHandler(void)
 
 	if (InputManager::MouseState.ButtonLeft.isPressed)
 	{
-		float xAngleUnit = (float)((InputManager::MouseState.GetLastXShifting()) * (float)Time::GetSecondElapsed() * _cameraSensitivity);
+		float xAngleUnit = (float)((InputManager::MouseState.GetLastXShifting()) * (float)Time::GetSecondElapsed() * _cameraSensitivity); //passer en pourcentage pour une réaction constante
 		float yAngleUnit = (float)((InputManager::MouseState.GetLastYShifting()) * (float)Time::GetSecondElapsed() * _cameraSensitivity);
 
 		this->offsetOrientation(yAngleUnit, xAngleUnit);

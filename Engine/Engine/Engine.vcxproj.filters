@@ -66,11 +66,20 @@
     <ClCompile Include="WindowEvent.cpp">
       <Filter>Fichiers sources\ManagerStatic</Filter>
     </ClCompile>
-    <ClCompile Include="LoaderObj.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="tinyobjLoader\tiny_obj_loader.cc">
       <Filter>Fichiers sources\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LoaderObj.cpp">
+      <Filter>Fichiers sources\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Skybox.cpp">
+      <Filter>Fichiers sources\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -113,11 +122,28 @@
     <ClInclude Include="WindowEvent.h">
       <Filter>Fichiers d%27en-tête\ManagerStatic</Filter>
     </ClInclude>
-    <ClInclude Include="LoaderObj.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="tinyobjLoader\tiny_obj_loader.h">
       <Filter>Fichiers d%27en-tête\Utils</Filter>
     </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="LoaderObj.h">
+      <Filter>Fichiers d%27en-tête\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Skybox.h">
+      <Filter>Fichiers d%27en-tête\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Engine.rc">
+      <Filter>Fichiers de ressources</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

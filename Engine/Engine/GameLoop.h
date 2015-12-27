@@ -15,9 +15,7 @@
 #include "Camera.h"
 #include "GUI.h"
 
-//Debug
-#include "Map.h"
-#include "Landmark.h"
+#include "Scene.h"
 
 class GameLoop
 {
@@ -33,6 +31,8 @@ public:
 	static void RegisterDrawFunction(std::function<void(const RenderDataBinder& RenderInfos)> drawFunction) { GameLoop::DrawCallList.push_back(drawFunction); }
 	static void RegisterPhysicUpdateFunction(std::function<void(void)> updatePhysicsFunction) { GameLoop::PhysicUpdateFunction.push_back(updatePhysicsFunction); }
 	static void RegisterLogicUpdateFunction(std::function<void(void)> updateLogicFunction) { GameLoop::LogicUpdateFunction.push_back(updateLogicFunction); }
+
+	static Camera		mainCamera;
 private:
 	//Function
 	static void CallStartFunction();
@@ -54,15 +54,12 @@ private:
 	static std::vector < std::function<void(void)>> GameLoop::EndCall;
 
 	static bool			isRunning;
-	static Camera		mainCamera;
 	static GLFWwindow*	window;
 	static int			windowWidth;
 	static int			windowHeight;
 
 	static GUI			windowGUI;
 
-	//Debug
-	static Landmark* mark;
-	static Map* mp;
+	static Scene*		CurrentScene;
 };
 

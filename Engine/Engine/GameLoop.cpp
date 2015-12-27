@@ -6,8 +6,6 @@
 #include "Time.h"
 #include "InputManager.h"
 
-
-
 std::vector < std::function<void(void)>> GameLoop::StartCall;
 
 std::vector < std::function<void(const RenderDataBinder&)>> GameLoop::DrawCallList;
@@ -22,10 +20,8 @@ GLFWwindow*	GameLoop::window;
 int			GameLoop::windowWidth=800;
 int			GameLoop::windowHeight=600;
 GUI			GameLoop::windowGUI;
+Scene*		GameLoop::CurrentScene;
 
-//Debug
-Map* GameLoop::mp;
-Landmark* GameLoop::mark;
 
 void GameLoop::Initialize()
 {
@@ -55,8 +51,9 @@ void GameLoop::Initialize()
 
 	GameLoop::windowGUI = GUI(GameLoop::windowWidth, GameLoop::windowHeight);
 
-	GameLoop::mp = new Map();
-	GameLoop::mark = new Landmark();
+	GameLoop::mainCamera.Initialize();
+
+	GameLoop::CurrentScene = new Scene();
 }
 
 void GameLoop::ResizeWindow(GLFWwindow* window, int width, int height)
@@ -135,12 +132,12 @@ void GameLoop::UpdatePhysics()
 
 void GameLoop::UpdateRender()
 {
-	int widthWindow;
-	int heightWindow;
+	//int widthWindow;
+	//int heightWindow;
 
-	glfwGetWindowSize(window, &widthWindow, &heightWindow);
+	//glfwGetWindowSize(window, &widthWindow, &heightWindow);
 
-	glViewport(0, 0, widthWindow, heightWindow);
+	//glViewport(0, 0, widthWindow, heightWindow);
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClearDepth(1.F);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

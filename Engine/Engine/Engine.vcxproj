@@ -125,6 +125,9 @@
     <ClCompile Include="LoaderObj.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Skybox.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="tinyobjLoader\tiny_obj_loader.cc" />
     <ClCompile Include="WindowEvent.cpp" />
@@ -140,11 +143,18 @@
     <ClInclude Include="Landmark.h" />
     <ClInclude Include="LoaderObj.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="Mesh.h" />
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="RenderDataBinder.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="Skybox.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="tinyobjLoader\tiny_obj_loader.h" />
     <ClInclude Include="WindowEvent.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Engine.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

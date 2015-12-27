@@ -1,6 +1,8 @@
 #pragma once
 #include <gtc/matrix_transform.hpp>
 
+#include "glew.h"
+
 class Camera {
 public:
 	Camera();
@@ -18,6 +20,8 @@ public:
 	float					viewportAspectRatio() const;
 	void					setViewportAspectRatio(float viewportAspectRatio);
 
+	void Camera::Initialize();
+
 	glm::vec3				forward() const;
 	glm::vec3				right() const;
 	glm::vec3				up() const;
@@ -27,6 +31,8 @@ public:
 	glm::mat4				view() const;
 
 	void					InputCameraHandler(void);
+
+	GLuint					UBO;
 
 private:
 	glm::vec3				_position;
