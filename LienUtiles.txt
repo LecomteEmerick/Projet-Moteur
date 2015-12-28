@@ -6,3 +6,6 @@ http://www.opengl-tutorial.org/fr/intermediate-tutorials/tutorial-16-shadow-mapp
 
 Culling
 http://jeux.developpez.com/faq/3d/?page=culling
+
+Skybox/ Envirronement Mapping:
+http://learnopengl.com/#!Advanced-OpenGL/Cubemaps

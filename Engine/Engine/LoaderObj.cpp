@@ -2,8 +2,7 @@
 
 #include "tinyobjLoader\tiny_obj_loader.h"
 
-#define STB_IMAGE_IMPLEMENTATION
-#include "stb_image.h"
+#include "SOIL.h"
 
 void LoaderObj::LoadObjFile(const std::string &inputFile, GLuint& VBO,GLuint& IBO,GLuint& VAO, GLuint& textureObj)
 {
@@ -86,9 +85,27 @@ void LoaderObj::LoadObjFile(const std::string &inputFile, GLuint& VBO,GLuint& IB
 	LoadAndCreateTextureRGBA(materials[0].diffuse_texname.c_str(), textureObj);
 }
 
-bool LoaderObj::LoadAndCreateTextureRGBA(const char *filename, GLuint &texID)
+bool LoaderObj::LoadAndCreateTextureRGBA(const char *filename, GLuint &textureID)
 {
-	glGenTextures(1, &texID);
+	//Generate texture ID and load texture data 
+	glGenTextures(1, &textureID);
+	int width, height;
+	unsigned char* image = SOIL_load_image(filename, &width, &height, 0, SOIL_LOAD_RGB);
+	// Assign texture to ID
+	glBindTexture(GL_TEXTURE_2D, textureID);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+	glGenerateMipmap(GL_TEXTURE_2D);
+
+	// Parameters
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glBindTexture(GL_TEXTURE_2D, 0);
+	SOIL_free_image_data(image);
+
+	return true;
+	/*glGenTextures(1, &texID);
 	glBindTexture(GL_TEXTURE_2D, texID);
 
 	// il est obligatoire de specifier une valeur pour GL_TEXTURE_MIN_FILTER
@@ -105,30 +122,33 @@ bool LoaderObj::LoadAndCreateTextureRGBA(const char *filename, GLuint &texID)
 
 		stbi_image_free(data);
 	}
-	return (data != nullptr);
+	return (data != nullptr);*/
 }
 
-bool LoaderObj::LoadAndCreateCubeMap(const char* filesname[], GLuint &cubeMapID)
+bool LoaderObj::LoadAndCreateCubeMap(std::vector<const GLchar*> filesname, GLuint &textureID)
 {
-	int w, h, comp;
+	glGenTextures(1, &textureID);
+	glActiveTexture(GL_TEXTURE0);
 
-	glGenTextures(1, &cubeMapID);
-	glBindTexture(GL_TEXTURE_CUBE_MAP, cubeMapID);
+	int width, height;
+	unsigned char* image;
 
-	for (int faceIndex = 0; faceIndex < 6; ++faceIndex)
+	glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
+	for (GLuint i = 0; i < 6; i++)
 	{
-		const char * filename = filesname[faceIndex];
-		uint8_t * data = stbi_load(filename, &w, &h, &comp, STBI_rgb_alpha);
-		if (data == nullptr)
+		image = SOIL_load_image(filesname[i], &width, &height, 0, SOIL_LOAD_RGB);
+		if (image == nullptr)
 			return false;
-		glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + faceIndex, 0, GL_RGBA8, w, h, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+		glTexImage2D(
+			GL_TEXTURE_CUBE_MAP_POSITIVE_X + i, 0,
+			GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image
+			);
 	}
-
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-	// glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
 
 	glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
 	return true;

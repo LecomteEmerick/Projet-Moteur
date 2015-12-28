@@ -74,11 +74,11 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>..\..\Libs\glfw\include\GLFW;..\..\Libs\glm\glm;..\..\Libs\glew\include\GL;..\..\Libs\FMod;..\..\Libs;..\..\Libs\boost\include;..\..\Libs\stb-master;..\..\Libs\AntTweakBar\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Libs\glfw\include\GLFW;..\..\Libs\glm\glm;..\..\Libs\glew\include\GL;..\..\Libs\FMod;..\..\Libs;..\..\Libs\boost\include;..\..\Libs\stb-master;..\..\Libs\AntTweakBar\include;..\..\Libs\SOIL\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>..\..\Libs\glfw\libVS2015\Debug;..\..\Libs\glew\lib\Release\Win32;..\..\Libs\FMod;..\..\Libs\boost\libVS2015;..\..\Libs;..\..\Libs\AntTweakBar\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glew32s.lib;glu32.lib;glfw3.lib;fmod_vc.lib;AntTweakBar.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\Libs\SOIL\lib\VS2015\debug;..\..\Libs\glfw\libVS2015\Debug;..\..\Libs\glew\lib\Release\Win32;..\..\Libs\FMod;..\..\Libs\boost\libVS2015;..\..\Libs;..\..\Libs\AntTweakBar\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glew32s.lib;glu32.lib;glfw3.lib;fmod_vc.lib;AntTweakBar.lib;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>msvcrt.lib;libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
@@ -125,7 +125,6 @@
     <ClCompile Include="LoaderObj.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Map.cpp" />
-    <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Skybox.cpp" />
     <ClCompile Include="Time.cpp" />
@@ -143,18 +142,13 @@
     <ClInclude Include="Landmark.h" />
     <ClInclude Include="LoaderObj.h" />
     <ClInclude Include="Map.h" />
-    <ClInclude Include="Mesh.h" />
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="RenderDataBinder.h" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Skybox.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="tinyobjLoader\tiny_obj_loader.h" />
     <ClInclude Include="WindowEvent.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="Engine.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

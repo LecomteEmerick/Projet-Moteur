@@ -1,12 +1,11 @@
-#version 330
+#version 330 core
 
-in vec3 v_texCoords;
+in vec3 TexCoords;
+out vec4 color;
 
-out vec4 Fragment;
+uniform samplerCube skybox;
 
-uniform samplerCube u_cubeMap;
-
-void main(void)
-{
-	Fragment = texture(u_cubeMap, v_texCoords);
+void main()
+{    
+    color = texture(skybox, TexCoords);
 }

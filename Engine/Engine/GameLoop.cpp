@@ -138,13 +138,13 @@ void GameLoop::UpdateRender()
 	//glfwGetWindowSize(window, &widthWindow, &heightWindow);
 
 	//glViewport(0, 0, widthWindow, heightWindow);
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	glClearDepth(1.F);
+	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+	//glClearDepth(1.F);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glm::mat4 Projection = mainCamera.projection();
-	glm::mat4 World = mainCamera.view();
-	glm::mat4 View = glm::mat4(1.0f);
+	glm::mat4 View = mainCamera.view();
+	glm::mat4 World = glm::mat4(1.0f);
 
 	RenderDataBinder render(Projection, View, World);
 
