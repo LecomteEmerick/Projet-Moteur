@@ -34,6 +34,21 @@
     <Filter Include="Fichiers d%27en-tête\Utils">
       <UniqueIdentifier>{10b939c6-1e49-4785-a0db-59db33146bfb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\GameObject">
+      <UniqueIdentifier>{85a10493-0653-4548-bfed-cb3cb9e6ec7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\GameObject\ComponentHeader">
+      <UniqueIdentifier>{4495a962-0be9-4789-89ef-8fa289122242}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\GameObject">
+      <UniqueIdentifier>{e54cb6b9-db66-4378-a0a3-7fa5082b37c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\GameObject\RenderComponent">
+      <UniqueIdentifier>{e2e74928-a467-4512-8e6c-8f26d15485e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers sources\GameObject\RenderComponent">
+      <UniqueIdentifier>{f8ad2e8e-8469-427a-8b3a-5149fbd76730}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -76,6 +91,18 @@
       <Filter>Fichiers sources\Render</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Fichiers sources\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Render.cpp">
+      <Filter>Fichiers sources\GameObject\RenderComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Fichiers sources\GameObject\RenderComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
@@ -129,6 +156,36 @@
       <Filter>Fichiers d%27en-tête\Render</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderComponent.h">
+      <Filter>Fichiers d%27en-tête\GameObject\ComponentHeader</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicComponent.h">
+      <Filter>Fichiers d%27en-tête\GameObject\ComponentHeader</Filter>
+    </ClInclude>
+    <ClInclude Include="LogicComponent.h">
+      <Filter>Fichiers d%27en-tête\GameObject\ComponentHeader</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>Fichiers d%27en-tête\GameObject\ComponentHeader</Filter>
+    </ClInclude>
+    <ClInclude Include="ComponentType.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Fichiers d%27en-tête\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Fichiers d%27en-tête\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Render.h">
+      <Filter>Fichiers d%27en-tête\GameObject\RenderComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Fichiers d%27en-tête\GameObject\RenderComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
