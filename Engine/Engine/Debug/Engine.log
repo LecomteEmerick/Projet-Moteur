@@ -1,18 +1,5 @@
-﻿cl : Ligne de commande warning D9028: échec de la régénération minimale, passage à la génération normale
-  LoaderObj.cpp
-c:\users\elecomte\documents\[personnel] emerick cours\projet moteur\engine\engine\loaderobj.cpp(49): warning C4018: '<' : incompatibilité signed/unsigned
-  Skybox.cpp
+﻿  Skybox.cpp
 c:\users\elecomte\documents\[personnel] emerick cours\projet moteur\engine\engine\loaderobj.h(6): warning C4005: 'GLEW_STATIC' : redéfinition de macro
   c:\users\elecomte\documents\[personnel] emerick cours\projet moteur\engine\engine\common\esgishader.h(12): note: voir la définition précédente de 'GLEW_STATIC'
-  Génération de code en cours...
-Camera.obj : warning LNK4049: symbole dÚfini localement ___glewBindBuffer importÚ
-Camera.obj : warning LNK4049: symbole dÚfini localement ___glewBufferData importÚ
-Camera.obj : warning LNK4049: symbole dÚfini localement ___glewGenBuffers importÚ
-Camera.obj : warning LNK4049: symbole dÚfini localement ___glewBindBufferBase importÚ
-glew32s.lib(glew.obj) : warning LNK4099: PDB 'vc120.pdb' n'a pu Ûtre trouvÚ avec 'glew32s.lib(glew.obj)' ou sur 'C:\Users\elecomte\Documents\[Personnel] Emerick Cours\Projet Moteur\Engine\Debug\vc120.pdb'á; l'objet sera liÚ sans informations de dÚbogage
-SOIL.lib(image_DXT.obj) : warning LNK4099: PDB 'SOIL.pdb' n'a pu Ûtre trouvÚ avec 'SOIL.lib(image_DXT.obj)' ou sur 'C:\Users\elecomte\Documents\[Personnel] Emerick Cours\Projet Moteur\Engine\Debug\SOIL.pdb'á; l'objet sera liÚ sans informations de dÚbogage
-SOIL.lib(image_helper.obj) : warning LNK4099: PDB 'SOIL.pdb' n'a pu Ûtre trouvÚ avec 'SOIL.lib(image_helper.obj)' ou sur 'C:\Users\elecomte\Documents\[Personnel] Emerick Cours\Projet Moteur\Engine\Debug\SOIL.pdb'á; l'objet sera liÚ sans informations de dÚbogage
-SOIL.lib(SOIL.obj) : warning LNK4099: PDB 'SOIL.pdb' n'a pu Ûtre trouvÚ avec 'SOIL.lib(SOIL.obj)' ou sur 'C:\Users\elecomte\Documents\[Personnel] Emerick Cours\Projet Moteur\Engine\Debug\SOIL.pdb'á; l'objet sera liÚ sans informations de dÚbogage
-SOIL.lib(stb_image_aug.obj) : warning LNK4099: PDB 'SOIL.pdb' n'a pu Ûtre trouvÚ avec 'SOIL.lib(stb_image_aug.obj)' ou sur 'C:\Users\elecomte\Documents\[Personnel] Emerick Cours\Projet Moteur\Engine\Debug\SOIL.pdb'á; l'objet sera liÚ sans informations de dÚbogage
   Engine.vcxproj -> C:\Users\elecomte\Documents\[Personnel] Emerick Cours\Projet Moteur\Engine\Debug\Engine.exe
   Engine.vcxproj -> C:\Users\elecomte\Documents\[Personnel] Emerick Cours\Projet Moteur\Engine\Debug\Engine.pdb (Partial PDB)

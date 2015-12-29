@@ -79,24 +79,12 @@ Skybox::Skybox()
 	this->Skybox_Shader.LoadFragmentShader("ShaderLib/skybox.fs");
 	this->Skybox_Shader.Create();
 
-	/*auto program = this->Skybox_Shader.GetProgram();
-	glUseProgram(program);
-
-	auto blockIndex = glGetUniformBlockIndex(program, "ViewProj");
-	glUniformBlockBinding(program, blockIndex, GameLoop::mainCamera.UBO);
-	auto cubemapIndex = glGetUniformLocation(program, "u_CubeMap");
-
-	glUniform1i(cubemapIndex, 0);
-	glUseProgram(0);*/
-
 	GameLoop::RegisterDrawFunction(std::bind(&Skybox::Draw, this, std::placeholders::_1));
 }
 
 
 void Skybox::Draw(const RenderDataBinder& render)
 {
-	//glBindBuffer(GL_UNIFORM_BUFFER, GameLoop::mainCamera.UBO);
-	//glBufferSubData(GL_UNIFORM_BUFFER, 0, sizeof(glm::mat4) * 2, glm::value_ptr(render.ViewMatrix_get()));
 
 	glDepthMask(GL_FALSE);
 
@@ -107,8 +95,6 @@ void Skybox::Draw(const RenderDataBinder& render)
 	glUniformMatrix4fv(glGetUniformLocation(program, "view"), 1, GL_FALSE, glm::value_ptr(render.ViewMatrix_get()));
 	glUniformMatrix4fv(glGetUniformLocation(program, "projection"), 1, GL_FALSE, glm::value_ptr(render.ProjectionMatrix_get()));
 
-	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-
 	glBindVertexArray(this->Skybox_VAO);
 	glActiveTexture(GL_TEXTURE0);
 
@@ -116,13 +102,13 @@ void Skybox::Draw(const RenderDataBinder& render)
 
 	glBindTexture(GL_TEXTURE_CUBE_MAP, this->Skybox_Texture);
 
-	//glDepthFunc(GL_LEQUAL);
+	glDepthFunc(GL_LEQUAL);
 
 	glDrawArrays(GL_TRIANGLES, 0, 36);//8 * 2 * 3);
 
 	glBindVertexArray(0);
 	glDepthMask(GL_TRUE);
-	//glDepthFunc(GL_LESS);
+	glDepthFunc(GL_LESS);
 }
 
 Skybox::~Skybox()
