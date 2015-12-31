@@ -1,5 +1,4 @@
-﻿  Skybox.cpp
-c:\users\elecomte\documents\[personnel] emerick cours\projet moteur\engine\engine\loaderobj.h(6): warning C4005: 'GLEW_STATIC' : redéfinition de macro
-  c:\users\elecomte\documents\[personnel] emerick cours\projet moteur\engine\engine\common\esgishader.h(12): note: voir la définition précédente de 'GLEW_STATIC'
+﻿  LoaderObj.cpp
+c:\users\elecomte\documents\[personnel] emerick cours\projet moteur\engine\engine\loaderobj.cpp(49): warning C4018: '<' : incompatibilité signed/unsigned
   Engine.vcxproj -> C:\Users\elecomte\Documents\[Personnel] Emerick Cours\Projet Moteur\Engine\Debug\Engine.exe
   Engine.vcxproj -> C:\Users\elecomte\Documents\[Personnel] Emerick Cours\Projet Moteur\Engine\Debug\Engine.pdb (Partial PDB)

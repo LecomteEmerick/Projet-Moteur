@@ -125,6 +125,7 @@
     <ClCompile Include="LoaderObj.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="ObjMesh.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Skybox.cpp" />
     <ClCompile Include="Time.cpp" />
@@ -143,6 +144,7 @@
     <ClInclude Include="LoaderObj.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Mouse.h" />
+    <ClInclude Include="ObjMesh.h" />
     <ClInclude Include="RenderDataBinder.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Skybox.h" />

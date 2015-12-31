@@ -1,8 +1,11 @@
 #pragma once
 
+#include <vector>
+
 #include "Map.h"
 #include "Landmark.h"
 #include "Skybox.h"
+#include "ObjMesh.h"
 
 class Scene
 {
@@ -11,7 +14,7 @@ public:
 	~Scene();
 private:
 	Landmark mark;
-	Map mp;
+	std::vector<ObjMesh> ObjList;
 	Skybox skybox;
 };
 

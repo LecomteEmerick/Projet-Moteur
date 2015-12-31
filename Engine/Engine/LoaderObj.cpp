@@ -4,7 +4,7 @@
 
 #include "SOIL.h"
 
-void LoaderObj::LoadObjFile(const std::string &inputFile, GLuint& VBO,GLuint& IBO,GLuint& VAO, GLuint& textureObj)
+void LoaderObj::LoadObjFile(const std::string &inputFile, GLuint& VBO,GLuint& IBO,GLuint& VAO, GLuint& textureObj, int& elementCount)
 {
 	std::vector<tinyobj::shape_t> shapes;
 	std::vector<tinyobj::material_t> materials;
@@ -15,7 +15,7 @@ void LoaderObj::LoadObjFile(const std::string &inputFile, GLuint& VBO,GLuint& IB
 	const std::vector<float>& normals = shapes[0].mesh.normals;
 	const std::vector<float>& texcoords = shapes[0].mesh.texcoords;
 
-	//g_Objet.ElementCount = indices.size();
+	elementCount = indices.size();
 
 	uint32_t stride = 0;
 
