@@ -4,6 +4,10 @@
 
 #include "GameLoop.h"
 
+#include "LogicComponent.h"
+#include "PhysicComponent.h"
+#include "RenderComponent.h"
+
 GameObject::GameObject()
 {
 }

@@ -11,7 +11,7 @@ class GameObject;
 class Component
 {
 public:
-	virtual ~Component() {}
+	//virtual ~Component() {}
 
 	virtual void Start() {}
 	virtual void Destroy() {}

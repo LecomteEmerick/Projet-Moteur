@@ -3,10 +3,6 @@
 #include <vector>
 #include <memory>
 
-#include "LogicComponent.h"
-#include "RenderComponent.h"
-#include "PhysicComponent.h"
-
 #include "Transform.h"
 
 class Component;

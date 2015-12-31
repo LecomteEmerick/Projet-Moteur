@@ -116,6 +116,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BasicShader.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="common\EsgiShader.cpp" />
     <ClCompile Include="GameLoop.cpp" />
@@ -130,12 +131,14 @@
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Render.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="ShaderManager.cpp" />
     <ClCompile Include="Skybox.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="tinyobjLoader\tiny_obj_loader.cc" />
     <ClCompile Include="WindowEvent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BasicShader.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="common\EsgiShader.h" />
@@ -158,6 +161,7 @@
     <ClInclude Include="RenderComponent.h" />
     <ClInclude Include="RenderDataBinder.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="ShaderManager.h" />
     <ClInclude Include="Skybox.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="tinyobjLoader\tiny_obj_loader.h" />

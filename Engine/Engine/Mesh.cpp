@@ -2,8 +2,17 @@
 
 
 
-Mesh::Mesh()
+Mesh::Mesh(float vertex[])
 {
+
+}
+Mesh::Mesh(float vertex[], int indices[])
+{
+
+}
+Mesh::Mesh(char* objFilename)
+{
+
 }
 
 

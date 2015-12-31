@@ -1,3 +1,5 @@
-﻿  GameObject.cpp
+﻿  Main.cpp
+c:\users\elecomte\documents\[personnel] emerick cours\projet moteur\engine\engine\main.cpp(3): warning C4067: jetons inattendus après la directive du préprocesseur - saut de ligne attendu
+cl : Ligne de commande warning D9028: échec de la régénération minimale, passage à la génération normale
   Engine.vcxproj -> C:\Users\elecomte\Documents\[Personnel] Emerick Cours\Projet Moteur\Engine\Debug\Engine.exe
   Engine.vcxproj -> C:\Users\elecomte\Documents\[Personnel] Emerick Cours\Projet Moteur\Engine\Debug\Engine.pdb (Partial PDB)

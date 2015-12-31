@@ -5,7 +5,8 @@
 class LogicComponent : Component
 {
 public:
-	virtual ~LogicComponent() {}
+	~LogicComponent() {}
+
 	int GetComponentType() { return LOGIC_COMPONENT; }
 	virtual void UpdateLogic() = 0;
 };

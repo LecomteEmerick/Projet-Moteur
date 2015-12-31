@@ -12,8 +12,6 @@ public:
 	Mesh(char* objFilename);
 	~Mesh();
 private:
-
-
 	GLuint	EBO;
 	GLuint	VBO;
 };

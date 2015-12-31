@@ -5,7 +5,11 @@
 class PhysicComponent : Component
 {
 public:
-	virtual ~PhysicComponent() {}
+	~PhysicComponent() {}
+
+	void Start() {}
+	void Destroy() {}
+
 	int GetComponentType() { return PHYSIC_COMPONENT; }
 	virtual void UpdatePhysics() = 0;
 };
